@@ -1,0 +1,25 @@
+{
+    "name": "wyxos/laravel-resources",
+    "description": "A plugin that implements the concept of resource management.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Wyxos\\LaravelResources\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wyxos",
+            "email": "joey.jaulimsing@live.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wyxos\\LaravelResources\\ResourceServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
