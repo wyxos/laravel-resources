@@ -7,3 +7,30 @@ The aim of this package is:
 - Enforce defining route actions as string making renaming difficult
 - Reduce navigating to nested folders to reach Requests
 
+
+```
+// Create a route instance
+
+php artisan make:route StoreUser
+
+// Output
+
+app/Routes/StoreUser.php
+
+// Usage
+
+Route::post('/users/store', StoreUser::class)
+
+// Create a resource route instance
+
+php artisan make:route User/Store --resource
+
+// Output
+
+app/Resource/User/Store.php
+
+// Usage
+
+route('resource', ['user', 'store'])
+
+```
