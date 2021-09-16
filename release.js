@@ -1,7 +1,6 @@
 (async function () {
     const { execSync } = require('child_process')
     const prompt = require('prompt')
-    const fs = require('fs')
 
     // read package.json
     // get version
