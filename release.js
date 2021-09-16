@@ -21,10 +21,13 @@
 
     execSync('git add .')
     console.log('Files staged.')
+
     execSync(`git commit -m "Release ${version}"`)
     console.log('Files committed.')
+
     execSync(`git tag ${version}`)
     console.log('Tag version added.')
-    execSync('git push origin --tags')
+
+    execSync(`git push origin ${version}`)
     console.log('Push complete.')
 }())
