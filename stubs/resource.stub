@@ -1,0 +1,11 @@
+<?php
+
+namespace $namespace;
+
+use Wyxos\LaravelResources\ResourceRequest;
+
+class $className extends ResourceRequest {
+    public function handle(){
+        // TODO create handler.
+    }
+}

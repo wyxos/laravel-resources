@@ -13,7 +13,7 @@ class ResourceHandler extends FormRequest
 
         $handler = Str::studly($this->route('handler'));
 
-        $class = "App\\Requests\\$resource\\$handler";
+        $class = "App\\Resources\\$resource\\$handler";
 
         if (!class_exists($class)) {
             throw new \Exception("$class is not defined.");
