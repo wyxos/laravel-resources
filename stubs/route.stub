@@ -1,0 +1,11 @@
+<?php
+
+namespace $namespace;
+
+use Wyxos\LaravelResources\FormRequest;
+
+class $className extends FormRequest {
+    public function handle(){
+        // TODO create handler.
+    }
+}
