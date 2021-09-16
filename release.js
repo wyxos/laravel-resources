@@ -23,7 +23,7 @@
     console.log('Files staged.')
     execSync(`git commit -m "Release ${version}"`)
     console.log('Files committed.')
-    execSync(`git tag -a ${version}`)
+    execSync(`git tag ${version}`)
     console.log('Tag version added.')
     execSync('git push --tags')
     console.log('Push complete.')
