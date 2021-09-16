@@ -25,6 +25,6 @@
     console.log('Files committed.')
     execSync(`git tag ${version}`)
     console.log('Tag version added.')
-    execSync('git push --tags')
+    execSync('git push origin --tags')
     console.log('Push complete.')
 }())

@@ -2,10 +2,10 @@
 
 namespace $namespace;
 
-use Wyxos\LaravelResources\FormRequest;
+use $use;
 
-class $className extends FormRequest {
+class $className extends $extend {
     public function handle(){
-        // TODO create handler.
+        /** TODO create handler. */
     }
 }

@@ -42,7 +42,7 @@ class MakeRouteCommand extends Command
 
         $path = explode('/', $name);
 
-        $stub = file_get_contents(__DIR__ . $this->getStub());
+        $stub = file_get_contents($this->getStub());
 
         $className = array_pop($path);
 
@@ -51,6 +51,18 @@ class MakeRouteCommand extends Command
         $stub = str_replace('$namespace', $namespace, $stub);
 
         $stub = str_replace('$className', $className, $stub);
+
+        $extendKey = $this->isResource() ? 'resource' : 'route';
+
+        $base = explode('\\', config("resources.extend.{$extendKey}"));
+
+        $use = join('\\', $base);
+
+        $extend = $base[count($base) - 1];
+
+        $stub = str_replace('$use', $use, $stub);
+
+        $stub = str_replace('$extend', $extend, $stub);
 
         $directory = base_path(join('/', array_merge(['app', $this->getRoot()], $path)));
 
@@ -68,10 +80,10 @@ class MakeRouteCommand extends Command
     protected function getStub(): string
     {
         if ($this->isResource()) {
-            return '/../stubs/resource.stub';
+            return __DIR__ . '/../stubs/resource.stub';
         }
 
-        return '/../stubs/route.stub';
+        return __DIR__ . '/../stubs/route.stub';
     }
 
     protected function getRoot(): string
