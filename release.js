@@ -19,5 +19,8 @@
         }
     })
 
-    execSync(`git add . & git commit -m "Release ${version}"`)
+    execSync('git add .')
+    execSync(`git commit -m "Release ${version}"`)
+    execSync(`git tag -a ${version}`)
+    execSync('git push --tags')
 }())
