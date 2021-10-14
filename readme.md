@@ -33,4 +33,16 @@ app/Resources/User/Store.php
 
 route('resource', ['user', 'store'])
 
+// Create a resource route instance within a namespace
+
+php artisan make:route User/Role/Store --resource
+
+// Output
+
+app/Resources/User/Store.php
+
+// Usage
+
+route('resource', ['user', 'store'])
+
 ```
