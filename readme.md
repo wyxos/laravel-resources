@@ -27,7 +27,7 @@ php artisan make:route User/Store --resource
 
 // Output
 
-app/Resource/User/Store.php
+app/Resources/User/Store.php
 
 // Usage
 

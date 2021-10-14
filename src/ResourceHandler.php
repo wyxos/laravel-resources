@@ -11,7 +11,9 @@ class ResourceHandler extends FormRequest
     {
         $resource = Str::studly($this->route('resource'));
 
-        $handler = Str::studly($this->route('handler'));
+        $handler = collect(explode('\/', $this->route('handler')))->map(function($segment){
+            return Str::studly($segment);
+        })->join('\\');
 
         $class = "App\\Resources\\$resource\\$handler";
 
