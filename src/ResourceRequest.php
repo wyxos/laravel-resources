@@ -43,7 +43,18 @@ abstract class ResourceRequest extends FormRequest
     public function deleteResource($resource)
     {
         if (!$this->queryResource($resource)->delete()) {
-            throw new Exception("Failed to delete resource $resource with id $this->id");
+            throw new Exception("Failed to delete resource $resource with id {$this->getId()}");
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function deleteModel(Model $model)
+    {
+        if (!$model->delete()) {
+            $resource = class_basename($model);
+            throw new Exception("Failed to delete model $resource with id {$this->getId()}");
         }
     }
 }
