@@ -11,7 +11,13 @@ class ResourceHandler extends FormRequest
     {
         $resource = Str::studly($this->route('resource'));
 
-        $handler = collect(explode('/', $this->route('handler')))->map(function($segment){
+        $route = $this->route('handler');
+
+        [$path, $method] = array_merge(explode('@', $route), ['handle']);
+
+        $method = Str::studly($method);
+
+        $handler = collect(explode('/', $path))->map(function ($segment) {
             return Str::studly($segment);
         })->join('\\');
 
@@ -21,6 +27,6 @@ class ResourceHandler extends FormRequest
             throw new \Exception("$class is not defined.");
         }
 
-        return app()->call("$class@handle");
+        return app()->call("$class@$method");
     }
 }
