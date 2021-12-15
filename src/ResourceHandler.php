@@ -15,7 +15,7 @@ class ResourceHandler extends FormRequest
 
         [$path, $method] = array_merge(explode('@', $route), ['handle']);
 
-        $method = Str::studly($method);
+        $method = Str::camel($method);
 
         $handler = collect(explode('/', $path))->map(function ($segment) {
             return Str::studly($segment);
