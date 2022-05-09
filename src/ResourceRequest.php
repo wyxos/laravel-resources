@@ -14,36 +14,41 @@ abstract class ResourceRequest extends FormRequest
     /**
      * @return int
      */
-    public function getId(): int
+    public function getPrimaryKey(): int
     {
         return $this->id;
+    }
+
+    public function getPrimaryColumns(): string
+    {
+        return 'id';
     }
 
     /**
      * @param $class
      * @return Builder
      */
-    public function queryResource($class): Builder
+    public function queryByClass($class): Builder
     {
-        return $class::query()->where('id', $this->getId());
+        return $class::query()->where($this->getPrimaryColumns(), $this->getPrimaryKey());
     }
 
     /**
      * @param $class
      * @return Model
      */
-    public function findResource($class): Model
+    public function findByClass($class): Model
     {
-        return $class::query()->find($this->getId());
+        return $class::query()->find($this->getPrimaryKey());
     }
 
     /**
      * @throws Exception
      */
-    public function deleteResource($resource)
+    public function deleteByClass($class)
     {
-        if (!$this->queryResource($resource)->delete()) {
-            throw new Exception("Failed to delete resource $resource with id {$this->getId()}");
+        if (!$this->queryByClass($class)->delete()) {
+            throw new Exception("Failed to delete resource $class with primary key {$this->getPrimaryKey()}");
         }
     }
 
@@ -53,8 +58,8 @@ abstract class ResourceRequest extends FormRequest
     public function deleteModel(Model $model)
     {
         if (!$model->delete()) {
-            $resource = class_basename($model);
-            throw new Exception("Failed to delete model $resource with id {$this->getId()}");
+            $class = class_basename($model);
+            throw new Exception("Failed to delete model $class with primary key {$this->getPrimaryKey()}");
         }
     }
 }
