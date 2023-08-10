@@ -1,3 +1,5 @@
+<span style="color:red">Please note that the repositories <a href="https://github.com/wyxos/laravel-listing">`wyxos/laravel-listing`</a> and <a href="https://github.com/wyxos/laravel-resources">`wyxos/laravel-resources`</a> are no longer maintained. They are now unified under <a href="https://github.com/wyxos/harmonie">`wyxos/harmonie`</a>.</span>
+
 Laravel Resources
 
 Add the concept of route handlers and resource handlers.
